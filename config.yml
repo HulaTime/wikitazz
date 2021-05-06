@@ -1,3 +1,5 @@
+--- # ---------------------------------------------------------------------
+
 #######################################################################
 # Wiki.js - CONFIGURATION                                             #
 #######################################################################
@@ -6,8 +8,6 @@
 
 # ---------------------------------------------------------------------
 # Port the server should listen to
-# ---------------------------------------------------------------------
-
 port: 3000
 
 # ---------------------------------------------------------------------
@@ -24,11 +24,11 @@ db:
   type: postgres
 
   # PostgreSQL / MySQL / MariaDB / MS SQL Server only:
-  host: localhost
+  host: ${WIKIJS_DB_HOST:-localhost}
   port: 5432
-  user: wikijs
+  user: ${WIKIJS_DB_USER:-wikijs}
   pass: ${WIKIJS_DB_PW}
-  db: wikijs
+  db: ${WIKIJS_DB_NAME:-wikijs}
   ssl: false
 
   # Optional - PostgreSQL / MySQL / MariaDB only:
@@ -58,7 +58,7 @@ db:
 # advanced options than those provided below.
 
 ssl:
-  enabled: ${SSL_ENABLED:-false}
+  enabled: ${WIKIJS_SSL_ENABLED:-false}
   port: 3443
 
   # Provider to use, possible values: custom, letsencrypt
